@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Paleta de colores - Franky Vargas Brand */
+  --color-primary: #0f0f0f;
+  --color-secondary: #FFFFFF;
+  --color-tertiary: #00bb01;
+  --color-anotherbg: #171717;
+  --color-complementary: #141414;
+
+  /* Texto */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #0f0f0f;
+  --color-text-tertiary: #00bb01;
+  --color-text-complementary: #F5F5F5;
+
+  /* Bordes */
+  --color-border: #272727;
+
+  /* Estados */
+  --color-success: #48B8AB;
+  --color-info: #28A6DF;
+  --color-warning: #fbbf24;
+  --color-danger: #ef4444;
+
+  /* Shadcn compatibility */
+  --color-background: #0f0f0f;
+  --color-foreground: #FFFFFF;
+  --color-card: #171717;
+  --color-card-foreground: #FFFFFF;
+  --color-popover: #171717;
+  --color-popover-foreground: #FFFFFF;
+  --color-muted: #272727;
+  --color-muted-foreground: #9b9c9f;
+  --color-accent: #00bb01;
+  --color-accent-foreground: #0f0f0f;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #FFFFFF;
+  --color-input: #272727;
+  --color-ring: #00bb01;
+  --radius: 0.5rem;
+}
+
+/* Scrollbar oculto */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilos base */
+body {
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+}
