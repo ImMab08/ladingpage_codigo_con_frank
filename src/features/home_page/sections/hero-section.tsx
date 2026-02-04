@@ -3,7 +3,7 @@
 import { Button } from "@/src/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import Link from "next/link"
-import { FloatingShapes } from "./floating-shapes"
+import { FloatingShapes } from "../../../components/floating-shapes"
 
 export function HeroSection() {
   return (
