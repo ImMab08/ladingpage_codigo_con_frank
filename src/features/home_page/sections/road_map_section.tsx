@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { slides } from "@/src/features/data/road_map_data";
 
 export default function RoadMapSection() {
@@ -12,26 +12,40 @@ export default function RoadMapSection() {
   const [currentTranslate, setCurrentTranslate] = useState(0);
 
   const startX = useRef(0);
+  const activeRef = useRef(0);
   const sliderRef = useRef<HTMLDivElement>(null);
-
-  /* ---------------- AUTO SLIDE ---------------- */
-  useEffect(() => {
-    if (isDragging) return;
-
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % TOTAL_SLIDES);
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, [isDragging, TOTAL_SLIDES]);
 
   /* ---------------- HELPERS ---------------- */
   const getSlideWidth = () => sliderRef.current?.offsetWidth || 0;
 
-  const snapToSlide = (newIndex: number) => {
+  const snapToSlide = useCallback((newIndex: number) => {
     setActive(newIndex);
     setCurrentTranslate(-newIndex * getSlideWidth());
-  };
+  }, []);
+
+  /* ---------------- AUTO SLIDE ---------------- */
+  useEffect(() => {
+    activeRef.current = active;
+  }, [active]);
+
+  useEffect(() => {
+    if (isDragging) return;
+
+    const interval = setInterval(() => {
+      const next = (activeRef.current + 1) % TOTAL_SLIDES;
+      snapToSlide(next);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [isDragging, TOTAL_SLIDES, snapToSlide]);
+
+  /* 🔑 RESIZE FIX */
+  useEffect(() => {
+    const onResize = () => setCurrentTranslate(-active * getSlideWidth());
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [active]);
 
   /* ---------------- DRAG START ---------------- */
   const startDrag = (clientX: number) => {
@@ -42,6 +56,7 @@ export default function RoadMapSection() {
   /* ---------------- DRAG MOVE ---------------- */
   const onDragMove = (clientX: number) => {
     if (!isDragging) return;
+
     const delta = clientX - startX.current;
     setCurrentTranslate(-active * getSlideWidth() + delta);
   };
@@ -51,10 +66,11 @@ export default function RoadMapSection() {
     if (!isDragging) return;
 
     const movedBy = currentTranslate + active * getSlideWidth();
+    const threshold = getSlideWidth() * 0.2;
 
-    if (movedBy < -100 && active < TOTAL_SLIDES - 1) {
+    if (movedBy < -threshold && active < TOTAL_SLIDES - 1) {
       snapToSlide(active + 1);
-    } else if (movedBy > 100 && active > 0) {
+    } else if (movedBy > threshold && active > 0) {
       snapToSlide(active - 1);
     } else {
       snapToSlide(active);
@@ -66,9 +82,8 @@ export default function RoadMapSection() {
   /* ---------------- RENDER ---------------- */
   return (
     <section className="relative h-full py-32 md:py-0 md:h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* SLIDER */}
       <div
-        className="size-full overflow-hidden max-w-6xl select-none cursor-pointer flex items-center justify-center touch-pan-y"
+        className="size-full overflow-hidden max-w-6xl select-none cursor-grab flex items-center justify-center touch-pan-y"
         onMouseDown={(e) => startDrag(e.clientX)}
         onMouseMove={(e) => onDragMove(e.clientX)}
         onMouseUp={endDrag}
@@ -92,22 +107,9 @@ export default function RoadMapSection() {
               className="min-w-full h-full relative overflow-hidden"
             >
               <div className="size-full max-w-6xl mx-auto px-6 md:p-10 flex">
-                <div
-                  className="
-                    flex size-full md:gap-12 items-center relative
-                    flex-col justify-center md:justify-normal
-                    lg:flex-row
-                  "
-                >
+                <div className="flex size-full md:gap-12 items-center relative flex-col justify-center md:justify-normal lg:flex-row">
                   {/* TEXTO */}
-                  <div
-                    className="
-                      relative max-w-md space-y-3 md:space-y-5
-                      text-center
-                      lg:text-left
-                      lg:-top-32 lg:left-32
-                    "
-                  >
+                  <div className="relative max-w-md space-y-3 md:space-y-5 text-center lg:text-left lg:-top-32 lg:left-32">
                     <div>
                       <p className="text-2xl font-bold leading-5 md:leading-2">
                         {slide.titleTop}
@@ -123,14 +125,7 @@ export default function RoadMapSection() {
                   </div>
 
                   {/* IMAGEN */}
-                  <div
-                    className="
-                      relative flex justify-center
-                      mt-10
-                      lg:mt-0
-                      lg:absolute lg:right-32 lg:bottom-32
-                    "
-                  >
+                  <div className="relative flex justify-center mt-10 lg:mt-0 lg:absolute lg:right-32 lg:bottom-32">
                     <Image
                       src={slide.image}
                       width={500}
@@ -148,7 +143,7 @@ export default function RoadMapSection() {
       </div>
 
       {/* DOTS */}
-      <div className="absolute bottom-20 flex gap-3 pointer-events-none md:pointer-events-auto">
+      <div className="absolute bottom-16 flex gap-3 p-4">
         {slides.map((_, index) => (
           <button
             key={index}

@@ -33,7 +33,7 @@ export function Navbar() {
             <Link href="#precios" className="text-muted-foreground hover:text-foreground transition-colors">
               Precios
             </Link>
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button asChild className="bg-tertiary text-primary-foreground hover:bg-tertiary/90">
               <Link href="#reservar">Reservar clase</Link>
             </Button>
           </div>
