@@ -13,6 +13,10 @@ export default function RoadMapSection() {
   const startX = useRef(0);
   const deltaX = useRef(0);
 
+  // Touch refs (mobile)
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
+
   /* ---------------- AUTO SLIDE ---------------- */
   useEffect(() => {
     if (isDragging) return;
@@ -24,7 +28,7 @@ export default function RoadMapSection() {
     return () => clearInterval(interval);
   }, [isDragging]);
 
-  /* ---------------- DRAG LOGIC ---------------- */
+  /* ---------------- MOUSE DRAG ---------------- */
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     startX.current = e.clientX;
@@ -48,16 +52,39 @@ export default function RoadMapSection() {
     deltaX.current = 0;
   };
 
+  /* ---------------- TOUCH (MOBILE) ---------------- */
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchDeltaX.current =
+      e.touches[0].clientX - touchStartX.current;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchDeltaX.current > 80 && active > 0) {
+      setActive(active - 1);
+    } else if (touchDeltaX.current < -80 && active < TOTAL_SLIDES - 1) {
+      setActive(active + 1);
+    }
+
+    touchDeltaX.current = 0;
+  };
+
   /* ---------------- RENDER ---------------- */
   return (
     <section className="relative h-full py-48 md:py-0 md:h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* SLIDER */}
       <div
-        className="size-full overflow-hidden max-w-6xl select-none cursor-pointer flex items-center justify-center"
+        className="size-full overflow-hidden max-w-6xl select-none cursor-pointer flex items-center justify-center touch-pan-y"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <div
           className="size-full flex transition-transform duration-1000 ease-in-out"
@@ -66,27 +93,25 @@ export default function RoadMapSection() {
           {slides.map((slide, index) => (
             <div
               key={index}
-              className=" min-w-full h-full relative overflow-hidden "
+              className="min-w-full h-full relative overflow-hidden"
             >
-              <div className=" size-full max-w-6xl mx-auto px-6 md:p-10 flex ">
+              <div className="size-full max-w-6xl mx-auto px-6 md:p-10 flex">
                 {/* CONTENEDOR PRINCIPAL */}
                 <div
                   className="
-                          flex size-full gap-12 items-center relative
-                          flex-col justify-center md:justify-normal
-                          lg:flex-row
-
-                          
-                        "
+                    flex size-full gap-12 items-center relative
+                    flex-col justify-center md:justify-normal
+                    lg:flex-row
+                  "
                 >
                   {/* TEXTO */}
                   <div
                     className="
-                            relative max-w-md space-y-3 md:space-y-5
-                            text-center
-                            lg:text-left
-                            lg:-top-32 lg:left-32
-                          "
+                      relative max-w-md space-y-3 md:space-y-5
+                      text-center
+                      lg:text-left
+                      lg:-top-32 lg:left-32
+                    "
                   >
                     <div>
                       <p className="text-2xl font-bold leading-5 md:leading-2">
@@ -105,11 +130,11 @@ export default function RoadMapSection() {
                   {/* IMAGEN */}
                   <div
                     className="
-                            relative flex justify-center
-                            mt-10
-                            lg:mt-0
-                            lg:absolute lg:right-32 lg:bottom-32
-                          "
+                      relative flex justify-center
+                      mt-10
+                      lg:mt-0
+                      lg:absolute lg:right-32 lg:bottom-32
+                    "
                   >
                     <Image
                       src={slide.image}
@@ -127,7 +152,7 @@ export default function RoadMapSection() {
       </div>
 
       {/* DOTS */}
-      <div className="absolute bottom-20 flex gap-3">
+      <div className="absolute bottom-20 flex gap-3 pointer-events-none md:pointer-events-auto">
         {slides.map((_, index) => (
           <button
             key={index}

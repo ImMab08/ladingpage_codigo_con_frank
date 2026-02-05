@@ -14,10 +14,9 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-primary font-mono text-xl">{"{"}</span>
+            <span className="text-text-tertiary font-mono text-xl">{"{"}</span>
             <span className="text-foreground font-semibold">Franky Vargas</span>
-            <span className="text-primary font-mono text-xl">{"}"}</span>
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-text-tertiary font-mono text-xl">{"}"}</span>
           </Link>
 
           {/* Desktop Nav */}

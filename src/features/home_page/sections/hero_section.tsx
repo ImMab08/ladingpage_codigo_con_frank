@@ -6,7 +6,7 @@ import { ArrowRight, Play } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden ">
+    <section className="relative h-screen flex items-center justify-center pt-20 overflow-hidden ">
       <div className=" max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Contenido */}
@@ -82,7 +82,7 @@ export function HeroSection() {
           </div>
 
           {/* Code Preview */}
-          <div className="relative lg:block space-y-4">
+          <div className="relative hidden lg:block space-y-4">
             <div className="relative bg-card rounded-lg border border-border p-6 shadow-2xl shadow-primary/5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-3 h-3 rounded-full bg-destructive/60" />
