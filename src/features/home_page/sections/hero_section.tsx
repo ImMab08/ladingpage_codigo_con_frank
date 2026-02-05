@@ -6,22 +6,22 @@ import { ArrowRight, Play } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-10 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Contenido */}
-          <div className="space-y-8">
+          <div className="space-y-8 pt-20 pb-48">
             <div className="">
-              <h3 className="text-5xl font-bold leading-4 text-balance ml-8">
+              <h3 className="text-3xl md:text-5xl font-bold leading-4 text-balance ml-8">
                 Aprende a
               </h3>
-              <span className="text-8xl font-extrabold text-tertiary">
+              <span className="text-6xl md:text-8xl font-extrabold text-tertiary">
                 Programar
               </span>
-              <h2 className="text-4xl leading-5 font-bold text-tertiary text-end">
+              <h2 className="text-2xl md:text-4xl leading-5 font-bold text-tertiary text-end pr-16 md:pr-0">
                 desde cero
               </h2>
-              <h3 className="text-4xl text-center leading-20 font-bold">
+              <h3 className="text-xl md:text-4xl text-center leading-10 md:leading-20 font-bold">
                 con clases{" "}
                 <span className="border-b-2 rounded-xl border-tertiary px-2 pb-1">
                   personalizadas
@@ -29,7 +29,7 @@ export function HeroSection() {
               </h3>
             </div>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
+            <p className="text-base md:text-xl text-muted-foreground max-w-lg leading-relaxed">
               Clases adaptadas a tu ritmo. Desarrollo web, software y las
               tecnologías más demandadas del mercado.
             </p>
@@ -82,7 +82,7 @@ export function HeroSection() {
           </div>
 
           {/* Code Preview */}
-          <div className="relative hidden lg:block space-y-4">
+          <div className="relative lg:block space-y-4">
             <div className="relative bg-card rounded-lg border border-border p-6 shadow-2xl shadow-primary/5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-3 h-3 rounded-full bg-destructive/60" />
