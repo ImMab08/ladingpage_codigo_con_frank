@@ -1,4 +1,3 @@
-import React from "react";
 import { HeroSection } from "./sections/hero-section";
 import { BenefitsSection } from "./sections/benefits-section";
 import { AboutSection } from "./sections/about-section";
