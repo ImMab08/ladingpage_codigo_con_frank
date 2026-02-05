@@ -6,11 +6,11 @@ import { ArrowRight, Play } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-10 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden ">
+      <div className=" max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Contenido */}
-          <div className="space-y-8 pt-20 pb-48">
+          <div className="space-y-8 ">
             <div className="">
               <h3 className="text-3xl md:text-5xl font-bold leading-4 text-balance ml-8">
                 Aprende a
