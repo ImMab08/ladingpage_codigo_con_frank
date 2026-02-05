@@ -5,17 +5,14 @@ import { useEffect, useRef, useState } from "react";
 import { slides } from "@/src/features/data/road_map_data";
 
 export default function RoadMapSection() {
-  const TOTAL_SLIDES = 4;
+  const TOTAL_SLIDES = slides.length;
 
   const [active, setActive] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [currentTranslate, setCurrentTranslate] = useState(0);
 
   const startX = useRef(0);
-  const deltaX = useRef(0);
-
-  // Touch refs (mobile)
-  const touchStartX = useRef(0);
-  const touchDeltaX = useRef(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   /* ---------------- AUTO SLIDE ---------------- */
   useEffect(() => {
@@ -23,72 +20,71 @@ export default function RoadMapSection() {
 
     const interval = setInterval(() => {
       setActive((prev) => (prev + 1) % TOTAL_SLIDES);
-    }, 80000);
+    }, 8000);
 
     return () => clearInterval(interval);
-  }, [isDragging]);
+  }, [isDragging, TOTAL_SLIDES]);
 
-  /* ---------------- MOUSE DRAG ---------------- */
-  const handleMouseDown = (e: React.MouseEvent) => {
+  /* ---------------- HELPERS ---------------- */
+  const getSlideWidth = () => sliderRef.current?.offsetWidth || 0;
+
+  const snapToSlide = (newIndex: number) => {
+    setActive(newIndex);
+    setCurrentTranslate(-newIndex * getSlideWidth());
+  };
+
+  /* ---------------- DRAG START ---------------- */
+  const startDrag = (clientX: number) => {
     setIsDragging(true);
-    startX.current = e.clientX;
+    startX.current = clientX;
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  /* ---------------- DRAG MOVE ---------------- */
+  const onDragMove = (clientX: number) => {
     if (!isDragging) return;
-    deltaX.current = e.clientX - startX.current;
+    const delta = clientX - startX.current;
+    setCurrentTranslate(-active * getSlideWidth() + delta);
   };
 
-  const handleMouseUp = () => {
+  /* ---------------- DRAG END ---------------- */
+  const endDrag = () => {
     if (!isDragging) return;
+
+    const movedBy = currentTranslate + active * getSlideWidth();
+
+    if (movedBy < -100 && active < TOTAL_SLIDES - 1) {
+      snapToSlide(active + 1);
+    } else if (movedBy > 100 && active > 0) {
+      snapToSlide(active - 1);
+    } else {
+      snapToSlide(active);
+    }
+
     setIsDragging(false);
-
-    if (deltaX.current > 120 && active > 0) {
-      setActive(active - 1);
-    } else if (deltaX.current < -120 && active < TOTAL_SLIDES - 1) {
-      setActive(active + 1);
-    }
-
-    deltaX.current = 0;
-  };
-
-  /* ---------------- TOUCH (MOBILE) ---------------- */
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchDeltaX.current =
-      e.touches[0].clientX - touchStartX.current;
-  };
-
-  const handleTouchEnd = () => {
-    if (touchDeltaX.current > 80 && active > 0) {
-      setActive(active - 1);
-    } else if (touchDeltaX.current < -80 && active < TOTAL_SLIDES - 1) {
-      setActive(active + 1);
-    }
-
-    touchDeltaX.current = 0;
   };
 
   /* ---------------- RENDER ---------------- */
   return (
-    <section className="relative h-full py-48 md:py-0 md:h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-full py-32 md:py-0 md:h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* SLIDER */}
       <div
         className="size-full overflow-hidden max-w-6xl select-none cursor-pointer flex items-center justify-center touch-pan-y"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        onMouseDown={(e) => startDrag(e.clientX)}
+        onMouseMove={(e) => onDragMove(e.clientX)}
+        onMouseUp={endDrag}
+        onMouseLeave={endDrag}
+        onTouchStart={(e) => startDrag(e.touches[0].clientX)}
+        onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
+        onTouchEnd={endDrag}
       >
         <div
-          className="size-full flex transition-transform duration-1000 ease-in-out"
-          style={{ transform: `translateX(-${active * 100}%)` }}
+          ref={sliderRef}
+          className={`size-full flex ${
+            isDragging ? "" : "transition-transform duration-500 ease-out"
+          }`}
+          style={{
+            transform: `translateX(${currentTranslate}px)`,
+          }}
         >
           {slides.map((slide, index) => (
             <div
@@ -96,10 +92,9 @@ export default function RoadMapSection() {
               className="min-w-full h-full relative overflow-hidden"
             >
               <div className="size-full max-w-6xl mx-auto px-6 md:p-10 flex">
-                {/* CONTENEDOR PRINCIPAL */}
                 <div
                   className="
-                    flex size-full gap-12 items-center relative
+                    flex size-full md:gap-12 items-center relative
                     flex-col justify-center md:justify-normal
                     lg:flex-row
                   "
@@ -141,7 +136,8 @@ export default function RoadMapSection() {
                       width={500}
                       height={500}
                       alt={slide.titleMain}
-                      className="w-80 lg:w-125 h-auto"
+                      draggable={false}
+                      className="w-80 lg:w-125 h-auto select-none pointer-events-none"
                     />
                   </div>
                 </div>
@@ -156,7 +152,7 @@ export default function RoadMapSection() {
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setActive(index)}
+            onClick={() => snapToSlide(index)}
             className={`transition-all duration-300 rounded-full cursor-pointer ${
               active === index
                 ? "w-10 h-2 bg-text-tertiary"
