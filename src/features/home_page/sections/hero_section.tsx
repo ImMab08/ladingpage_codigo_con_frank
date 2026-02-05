@@ -9,21 +9,24 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-
           {/* Contenido */}
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-anotherbg rounded-full border border-border">
-              <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse" />
-              <span className="text-sm text-muted-foreground">
-                Cupos limitados para este mes
-              </span>
-            </div>
-
             <div className="">
-              <h3 className="text-5xl font-bold leading-4 text-balance ml-8">Aprende a</h3>
-              <span className="text-8xl font-extrabold text-tertiary">Programar</span>
-              <h2 className="text-4xl leading-5 font-bold text-tertiary text-end">desde cero</h2>
-              <h3 className="text-4xl text-center leading-20 font-bold">con clases <span className="border-b-2 rounded-xl border-tertiary px-2 pb-1">personalizadas</span></h3>
+              <h3 className="text-5xl font-bold leading-4 text-balance ml-8">
+                Aprende a
+              </h3>
+              <span className="text-8xl font-extrabold text-tertiary">
+                Programar
+              </span>
+              <h2 className="text-4xl leading-5 font-bold text-tertiary text-end">
+                desde cero
+              </h2>
+              <h3 className="text-4xl text-center leading-20 font-bold">
+                con clases{" "}
+                <span className="border-b-2 rounded-xl border-tertiary px-2 pb-1">
+                  personalizadas
+                </span>
+              </h3>
             </div>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
@@ -79,7 +82,7 @@ export function HeroSection() {
           </div>
 
           {/* Code Preview */}
-          <div className="relative hidden lg:block">
+          <div className="relative hidden lg:block space-y-4">
             <div className="relative bg-card rounded-lg border border-border p-6 shadow-2xl shadow-primary/5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-3 h-3 rounded-full bg-destructive/60" />
@@ -122,6 +125,14 @@ export function HeroSection() {
                 </code>
               </pre>
               <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary/20 rounded-lg blur-xl" />
+            </div>
+            <div className="flex items-end justify-end">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-anotherbg rounded-full border border-border">
+                <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse" />
+                <span className="text-sm text-muted-foreground">
+                  Cupos limitados para este mes
+                </span>
+              </div>
             </div>
           </div>
         </div>
