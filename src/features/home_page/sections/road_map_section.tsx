@@ -83,7 +83,7 @@ export default function RoadMapSection() {
   return (
     <section className="relative h-full py-32 md:py-0 md:h-screen flex flex-col items-center justify-center overflow-hidden">
       <div
-        className="size-full overflow-hidden max-w-6xl select-none cursor-grab flex items-center justify-center touch-pan-y"
+        className="size-full overflow-hidden max-w-6xl select-none cursor-grab flex items-center justify-center touch-pan-y relative"
         onMouseDown={(e) => startDrag(e.clientX)}
         onMouseMove={(e) => onDragMove(e.clientX)}
         onMouseUp={endDrag}
