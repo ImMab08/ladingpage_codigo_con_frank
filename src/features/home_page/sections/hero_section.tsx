@@ -2,7 +2,8 @@
 import Link from "next/link";
 
 import { Button } from "@/src/components/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, CircleCheck, Icon, Play } from "lucide-react";
+import { IconCheckCircleFill } from "@/src/shared/icons/icon_check_circle_fill";
 
 export function HeroSection() {
   return (
@@ -15,10 +16,17 @@ export function HeroSection() {
               <h3 className="text-3xl md:text-5xl font-bold leading-4 text-balance ml-8">
                 Aprende a
               </h3>
-              <span className="text-6xl md:text-8xl font-extrabold text-tertiary">
+              <span
+                className="
+                  text-6xl md:text-8xl font-extrabold
+                  bg-linear-to-r from-green-500 
+                  via-teal-500 to-indigo-700 bg-clip-text 
+                  text-transparent
+                "
+              >
                 Programar
               </span>
-              <h2 className="text-2xl md:text-4xl leading-5 font-bold text-tertiary text-end pr-16 md:pr-0">
+              <h2 className="text-2xl md:text-4xl  font-bold bg-linear-to-r from-teal-500 via-sky-500 to-indigo-700 bg-clip-text text-transparent text-end pr-16 md:pr-0">
                 desde cero
               </h2>
               <h3 className="text-xl md:text-4xl text-center leading-10 md:leading-20 font-bold">
@@ -38,24 +46,21 @@ export function HeroSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-tertiary text-primary-foreground hover:bg-tertiary/90 gap-2 text-base"
+                className="bg-yellow-300 text-primary hover:bg-yellow-300/90 gap-2 text-base"
               >
                 <Link href="#reservar">
                   Reservar mi clase
                   <ArrowRight size={18} />
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="gap-2 text-base border-border hover:bg-secondary bg-transparent"
-              >
-                <Link href="#sobre-mi">
-                  <Play size={18} />
-                  Conocer más
-                </Link>
-              </Button>
+
+              <div className="w-36 rounded-md bg-linear-to-r from-blue-500 via-purple-500 to-indigo-500 p-px">
+                <div className="flex h-full w-full items-center justify-center rounded-md bg-primary space-x-2">
+                  <Play size={16} color="#009dff" />
+
+                  <Link href="#sobre-mi">Conocer más</Link>
+                </div>
+              </div>
             </div>
 
             <div className="flex items-center gap-6 pt-4">
@@ -81,8 +86,25 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Code Preview */}
+          {/* Bloque de código */}
           <div className="relative hidden lg:block space-y-4">
+            {/* Difuminados */}
+            <div className="absolute -top-5 -left-10 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl -z-10" />
+            <div className="absolute -top-5 left-20 w-48 h-48 bg-green-500/20 rounded-full blur-3xl -z-10" />
+            <div className="absolute -top-5 left-48 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl -z-10" />
+
+            <div className="absolute -bottom-2 -left-5 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl -z-10" />
+            <div className="absolute -bottom-2 left-32 w-32 h-32 bg-green-500/20 rounded-full blur-3xl -z-10" />
+
+            <div className="absolute -bottom-5 -right-2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl -z-10" />
+            <div className="absolute top-0 -right-2 w-32 h-32 bg-red-500/40 rounded-full blur-3xl -z-10" />
+            <div className="absolute top-20 right-5 w-32 h-32 bg-yellow-500/40 rounded-full blur-3xl -z-10" />
+            <div className="absolute top-20 right-6 w-32 h-32 bg-green-500/40 rounded-full blur-3xl -z-10" />
+
+            {/* Bloques */}
+            <div className="absolute -top-10 -right-10 bg-card/40 rounded-lg border border-border p-6 shadow-2xl shadow-primary/5 w-md h-60"></div>
+            <div className="absolute bottom-3 -left-5 bg-card/60 rounded-lg border border-border p-6 shadow-2xl shadow-primary/5 w-64 h-20"></div>
+
             <div className="relative bg-card rounded-lg border border-border p-6 shadow-2xl shadow-primary/5">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-3 h-3 rounded-full bg-destructive/60" />
@@ -126,10 +148,12 @@ export function HeroSection() {
               </pre>
               <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-primary/20 rounded-lg blur-xl" />
             </div>
-            <div className="flex items-end justify-end">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-anotherbg rounded-full border border-border">
-                <span className="w-2 h-2 rounded-full bg-tertiary animate-pulse" />
-                <span className="text-sm text-muted-foreground">
+
+            <div className="flex items-end justify-end select-none">
+              <div className="relative inline-flex items-center gap-2 px-4 py-2 bg-yellow-300 shadow-2xl rounded-xl border border-border">
+                <div className="w-4 h-4 left-5 rounded-full bg-white z-0 absolute"></div>
+                <IconCheckCircleFill className="fill-accent relative z-10" />
+                <span className="text-base font-semibold text-text-secondary">
                   Cupos limitados para este mes
                 </span>
               </div>
