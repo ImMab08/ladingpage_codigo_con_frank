@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { slides } from "@/src/features/data/road_map_data";
 
-export default function RoadMapSection() {
+export  function CarrouselSection() {
   const TOTAL_SLIDES = slides.length;
 
   const [active, setActive] = useState(0);
