@@ -25,7 +25,7 @@ const ImageSpaceship = () => {
         transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
       >
         <Image
-          className="-bottom-80 left-10 md:bottom-0 relative z-10 w-full max-w-lg mx-auto drop-shadow-2xl"
+          className="-bottom-80 mt-10 md:bottom-0 relative z-10 w-full max-w-lg mx-auto drop-shadow-2xl"
           src="/img/image_spaceship.png"
           alt="Juego de naves espaciales"
           width={300}

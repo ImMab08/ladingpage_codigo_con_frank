@@ -3,7 +3,7 @@ import { ImageSpaceship } from "@/src/components/image_spaceship";
 
 export function GameSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-background">
+    <section className="relative flex flex-col items-center justify-center w-full py-56  h-full md:h-screen overflow-hidden bg-background">
       {/* Fondo estrellado */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
