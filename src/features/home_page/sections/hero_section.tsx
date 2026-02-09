@@ -28,21 +28,21 @@ export function HeroSection() {
       </div>
 
       {/* Contenido */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 h-full flex items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-6 h-full flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Lado izquierdo */}
           <div className="space-y-8">
 
             <div className="space-y-2 ">
               <div className="leading-none">
-                <h1 className="relative left-2 -bottom-2 text-3xl md:text-4xl font-extrabold leading-1 tracking-tight">
+                <h1 className="relative left-2 -bottom-2 text-2xl md:text-4xl font-extrabold leading-1 tracking-tight">
                   Aprende
                 </h1>
 
                 <h2
                   className="
                     text-6xl md:text-8xl font-extrabold tracking-tight
-                    leading-32
+                    leading-24 md:leading-32
                     bg-linear-to-r from-green-400 via-yellow-400 to-indigo-600
                     bg-clip-text text-transparent
                   "
@@ -50,7 +50,7 @@ export function HeroSection() {
                   Python
                 </h2>
 
-                <h3 className="relative -top-5 left-46 text-3xl md:text-4xl font-extrabold tracking-tight">
+                <h3 className="relative -top-5 left-22 md:left-46 text-3xl md:text-4xl font-extrabold tracking-tight">
                   jugando
                 </h3>
               </div>

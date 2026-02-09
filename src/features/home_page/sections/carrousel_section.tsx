@@ -106,7 +106,7 @@ export  function CarrouselSection() {
               key={index}
               className="min-w-full h-full relative overflow-hidden"
             >
-              <div className="size-full max-w-6xl mx-auto px-6 md:p-10 flex">
+              <div className="size-full max-w-6xl mx-auto px-8 md:px-6  md:p-10 flex">
                 <div className="flex size-full md:gap-12 items-center relative flex-col justify-center md:justify-normal lg:flex-row">
                   {/* TEXTO */}
                   <div className="relative max-w-md space-y-3 md:space-y-5 text-center lg:text-left lg:-top-32 lg:left-32">

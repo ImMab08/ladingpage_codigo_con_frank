@@ -1,42 +1,79 @@
-import Image from "next/image";
-import React from "react";
+'use client'
+import { ImageSpaceship } from "@/src/components/image_spaceship";
 
 export function GameSection() {
   return (
-    <section className="relative w-full py-32 overflow-hidden bg-background">
-      {/* Glow background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl" />
-      </div>
+    <section className="relative flex flex-col items-center justify-center w-full h-screen overflow-hidden bg-background">
+      {/* Fondo estrellado */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Estrellas pequeñas */}
+        <circle cx="5%" cy="10%" r="1" fill="white" opacity="0.4" />
+        <circle cx="12%" cy="30%" r="1.2" fill="white" opacity="0.5" />
+        <circle cx="18%" cy="75%" r="0.8" fill="white" opacity="0.3" />
+        <circle cx="22%" cy="15%" r="1" fill="white" opacity="0.4" />
+        <circle cx="28%" cy="55%" r="1.1" fill="white" opacity="0.5" />
+        <circle cx="33%" cy="80%" r="0.9" fill="white" opacity="0.4" />
+        <circle cx="38%" cy="25%" r="1" fill="white" opacity="0.5" />
+        <circle cx="42%" cy="65%" r="1.2" fill="white" opacity="0.6" />
+        <circle cx="47%" cy="10%" r="0.8" fill="white" opacity="0.3" />
+        <circle cx="50%" cy="45%" r="1" fill="white" opacity="0.4" />
 
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* Estrellas medianas */}
+        <circle cx="8%" cy="50%" r="1.6" fill="white" opacity="0.6" />
+        <circle cx="15%" cy="90%" r="1.8" fill="white" opacity="0.7" />
+        <circle cx="20%" cy="40%" r="1.5" fill="white" opacity="0.6" />
+        <circle cx="27%" cy="85%" r="1.7" fill="white" opacity="0.6" />
+        <circle cx="32%" cy="5%" r="1.6" fill="white" opacity="0.5" />
+        <circle cx="36%" cy="60%" r="1.8" fill="white" opacity="0.7" />
+        <circle cx="44%" cy="35%" r="1.5" fill="white" opacity="0.6" />
+        <circle cx="48%" cy="75%" r="1.7" fill="white" opacity="0.6" />
+        <circle cx="53%" cy="20%" r="1.6" fill="white" opacity="0.5" />
+        <circle cx="58%" cy="90%" r="1.8" fill="white" opacity="0.7" />
+
+        {/* Estrellas grandes (pocas, para contraste) */}
+        <circle cx="10%" cy="65%" r="2.2" fill="white" opacity="0.8" />
+        <circle cx="25%" cy="20%" r="2" fill="white" opacity="0.7" />
+        <circle cx="40%" cy="90%" r="2.4" fill="white" opacity="0.85" />
+        <circle cx="55%" cy="50%" r="2.1" fill="white" opacity="0.75" />
+        <circle cx="70%" cy="30%" r="2.3" fill="white" opacity="0.8" />
+        <circle cx="85%" cy="70%" r="2.2" fill="white" opacity="0.75" />
+
+        {/* Lado derecho */}
+        <circle cx="60%" cy="10%" r="1" fill="white" opacity="0.4" />
+        <circle cx="65%" cy="85%" r="1.2" fill="white" opacity="0.5" />
+        <circle cx="68%" cy="55%" r="1.4" fill="white" opacity="0.6" />
+        <circle cx="72%" cy="15%" r="1" fill="white" opacity="0.4" />
+        <circle cx="75%" cy="40%" r="1.6" fill="white" opacity="0.6" />
+        <circle cx="78%" cy="90%" r="1.8" fill="white" opacity="0.7" />
+        <circle cx="82%" cy="25%" r="1.2" fill="white" opacity="0.5" />
+        <circle cx="88%" cy="50%" r="1.5" fill="white" opacity="0.6" />
+        <circle cx="92%" cy="10%" r="1" fill="white" opacity="0.4" />
+        <circle cx="95%" cy="80%" r="1.3" fill="white" opacity="0.5" />
+      </svg>
+
+      <div className="max-w-6xl mx-auto px-8 md:px-6 ">
+        <div className="relative grid lg:grid-cols-2 gap-16 items-center">
           {/* IMAGE */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-linear-to-tr from-indigo-500/20 via-transparent to-green-500/20 rounded-2xl blur-2xl" />
-            <Image
-							width={500}
-							height={500}
-
-              src="/img/image_spaceship.png"
-              alt="Juego de naves espaciales"
-              className="relative z-10 w-full max-w-lg mx-auto drop-shadow-2xl"
-            />
+          <div className="absolute md:relative">
+            <div className="absolute inset-0 bg-linear-to-tr from-indigo-500/20 via-transparent to-green-500/20 rounded-2xl blur-2xl opacity-80" />
+            <ImageSpaceship />
           </div>
 
           {/* TEXT */}
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-6xl font-extrabold leading-14">
+          <div className="relative space-y-6">
+            <h2 className="text-4xl md:text-6xl font-extrabold leading-9 md:leading-14">
               Programa tu propio{" "}
-              <span className="bg-linear-to-r from-green-400 via-yellow-400 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
                 juego de naves
               </span>
             </h2>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
               Aprenderán Python creando un videojuego espacial al estilo clásico
-              de los 90. Cada línea de código controla la nave, los disparos y
+              de los 90°. Cada línea de código controla la nave, los disparos y
               las misiones.
             </p>
 
