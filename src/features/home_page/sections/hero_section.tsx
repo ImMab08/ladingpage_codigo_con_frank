@@ -32,17 +32,16 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Lado izquierdo */}
           <div className="space-y-8">
-
             <div className="space-y-2 ">
               <div className="leading-none">
-                <h1 className="relative left-2 -bottom-2 text-2xl md:text-4xl font-extrabold leading-1 tracking-tight">
+                <h1 className="relative left-2 -bottom-2 text-3xl md:text-5xl font-extrabold leading-8 tracking-tight">
                   Aprende
                 </h1>
 
                 <h2
                   className="
-                    text-6xl md:text-8xl font-extrabold tracking-tight
-                    leading-24 md:leading-32
+                    text-7xl md:text-9xl font-extrabold tracking-tight
+                    leading-20 md:leading-32
                     bg-linear-to-r from-green-400 via-yellow-400 to-indigo-600
                     bg-clip-text text-transparent
                   "
@@ -50,12 +49,12 @@ export function HeroSection() {
                   Python
                 </h2>
 
-                <h3 className="relative -top-5 left-22 md:left-46 text-3xl md:text-4xl font-extrabold tracking-tight">
+                <h3 className="relative -top-5 left-32 md:left-64 text-3xl md:text-5xl font-extrabold leading-12 md:leading-10 md:tracking-tight">
                   jugando
                 </h3>
               </div>
 
-              <p className="text-base md:text-lg max-w-lg font-medium text-muted-foreground">
+              <p className="text-base font-sans md:text-lg max-w-lg font-medium text-muted-foreground">
                 Clases interactivas para niños y jóvenes de{" "}
                 <span className="text-foreground font-bold">8 a 16 años</span>,
                 donde el código se convierte en un juego. Cada clase es una
@@ -75,7 +74,6 @@ export function HeroSection() {
                   <ArrowRight size={18} />
                 </Link>
               </Button>
-
             </div>
 
             {/* Referencia social */}
@@ -90,8 +88,8 @@ export function HeroSection() {
                   </div>
                 ))}
               </div>
-              <div>
-                <p className="text-sm font-medium text-foreground">
+              <div className="font-sans">
+                <p className="text-smfont-medium text-foreground">
                   +50 pilotos entrenados
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -171,17 +169,29 @@ export function HeroSection() {
             </div>
 
             {/* BADGE */}
-            <div className="flex justify-end mt-4">
-              <div className="relative inline-flex items-center gap-2 px-4 py-2 bg-yellow-300 rounded-xl shadow-xl border border-border">
-                <IconCheckCircleFill className="fill-accent" />
-                <span className="text-sm font-semibold text-text-secondary">
-                  Cupos limitados para este mes
+            <div className="w-full flex items-center justify-center mt-3 font-sans ">
+              <div className="relative inline-flex items-center gap-2 px-4 py-2 bg-card/80 rounded-xl shadow-xl border border-border">
+                <span className="text-sm font-semibold text-text-primary">
+                  Sin experiencia previa · Grupos pequeños · Acompañamiento real
                 </span>
+
+                <IconCheckCircleFill className="fill-accent" />
               </div>
             </div>
           </div>
         </div>
       </div>
+      {/* Fade inferior */}
+      <div
+        className="
+          absolute bottom-0 left-0 right-0
+          h-48
+          bg-linear-to-t
+          from-primary
+          to-transparent
+          z-10
+        "
+      />
     </section>
   );
 }

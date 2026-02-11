@@ -1,6 +1,6 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono, Pixelify_Sans } from 'next/font/google'
 
 import './globals.css'
 
@@ -14,9 +14,15 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono'
 })
 
+const pixelify = Pixelify_Sans({
+  subsets: ['latin'],
+  variable: '--font-pixelify',
+})
+
+
 export const metadata: Metadata = {
-  title: 'Franky Vargas | Aprende a Programar',
-  description: 'Clases personalizadas de programación con Franky Vargas. Aprende desarrollo web, software y más con mentorías 1:1.'
+  title: 'Código con Frank | Inicio',
+  description: 'Clases personalizadas de programación. Aprende desarrollo web, software y más con mentorías.'
 }
 
 export default function RootLayout({
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body className={`${pixelify.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}>
       
         {children}
 
