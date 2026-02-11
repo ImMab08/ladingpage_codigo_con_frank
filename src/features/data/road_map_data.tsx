@@ -5,7 +5,7 @@ export const slides = [
     text: (
       <>
         Construimos los cimientos de nuestro camino,{" "}
-        <span className="text-text-tertiary">
+        <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
           aprenderás qué es realmente programar
         </span>
         , cómo funciona un programa y cómo dar instrucciones claras a una
@@ -21,7 +21,7 @@ export const slides = [
     text: (
       <>
         Programar no es escribir código, es{" "}
-        <span className="text-text-tertiary">
+        <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
           aprender a resolver problemas
         </span>
         . Aquí entrenamos tu mente para pensar paso a paso, dividir situaciones
@@ -53,7 +53,7 @@ export const slides = [
     text: (
       <>
         Consolidamos todo lo aprendido para que avances con{" "}
-        <span className="text-text-tertiary">bases sólidas y confianza</span>.
+        <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">bases sólidas y confianza</span>.
         Aprenderás cómo seguir estudiando de forma autónoma y cómo avanzar hacia
         niveles más altos sin perderte. No vendemos atajos, construimos
         fundamentos que realmente duran.

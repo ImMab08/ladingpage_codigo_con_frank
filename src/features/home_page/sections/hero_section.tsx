@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 
-import { Button } from "@/src/components/button";
 import { IconCheckCircleFill } from "@/src/shared/icons/icon_check_circle_fill";
+import { ButtonWhatsapp } from "@/src/components/button_whatsapp";
 
 export function HeroSection() {
   return (
     <section className="relative h-screen w-full pt-20 overflow-hidden isolate">
+
       {/* Fondo */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -29,6 +28,8 @@ export function HeroSection() {
 
       {/* Contenido */}
       <div className="relative z-10 max-w-6xl mx-auto px-8 md:px-6 h-full flex items-center">
+              
+
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Lado izquierdo */}
           <div className="space-y-8">
@@ -63,18 +64,7 @@ export function HeroSection() {
             </div>
 
             {/* Botón */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-yellow-300 text-primary hover:bg-yellow-300/90 gap-2 text-base"
-              >
-                <Link href="#reservar">
-                  Iniciar misión
-                  <ArrowRight size={18} />
-                </Link>
-              </Button>
-            </div>
+            <ButtonWhatsapp />
 
             {/* Referencia social */}
             <div className="flex items-center gap-6 pt-4">
@@ -182,8 +172,7 @@ export function HeroSection() {
         </div>
       </div>
       {/* Fade inferior */}
-      <div
-        className="
+      <div className="
           absolute bottom-0 left-0 right-0
           h-48
           bg-linear-to-t

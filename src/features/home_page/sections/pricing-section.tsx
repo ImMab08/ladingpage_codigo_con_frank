@@ -1,5 +1,5 @@
 import { Check } from "lucide-react"
-import { Button } from "@/src/components/button"
+import { Button } from "@/src/components/button_component"
 import Link from "next/link"
 
 const plans = [

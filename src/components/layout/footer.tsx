@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Linkedin, Twitter } from "lucide-react"
+import { Facebook, Github, Instagram, InstagramIcon, Linkedin, LinkedinIcon, PhoneCall, Twitter } from "lucide-react"
 
 export function Footer() {
   return (
@@ -31,32 +31,32 @@ export function Footer() {
             <Link 
               href="https://github.com" 
               target="_blank"
-              className="w-9 h-9 rounded-full bg-secondary border border-border flex items-center justify-center hover:border-primary transition-colors"
-              aria-label="GitHub"
+              className="w-9 h-9 rounded-full bg-accent border border-border flex items-center justify-center hover:border-primary transition-colors"
+              aria-label="Instagram"
             >
-              <Github className="w-4 h-4" />
+              <Instagram className="w-4 h-4" />
             </Link>
             <Link 
               href="https://linkedin.com" 
               target="_blank"
-              className="w-9 h-9 rounded-full bg-secondary border border-border flex items-center justify-center hover:border-primary transition-colors"
+              className="w-9 h-9 rounded-full bg-accent border border-border flex items-center justify-center hover:border-primary transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-4 h-4" />
+              <Facebook className="w-4 h-4" />
             </Link>
             <Link 
               href="https://twitter.com" 
               target="_blank"
-              className="w-9 h-9 rounded-full bg-secondary border border-border flex items-center justify-center hover:border-primary transition-colors"
-              aria-label="Twitter"
+              className="w-9 h-9 rounded-full bg-accent border border-border flex items-center justify-center hover:border-primary transition-colors"
+              aria-label="Whatsapp"
             >
-              <Twitter className="w-4 h-4" />
+              <PhoneCall className="w-4 h-4" />
             </Link>
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Franky Vargas. Todos los derechos reservados.</p>
+        <div className="mt-8 pt-8 border-t border-border text-center text-sm font-sans text-muted-foreground">
+          <p>© Franky Vargas - 2026 <br />Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

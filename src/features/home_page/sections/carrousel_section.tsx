@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { slides } from "@/src/features/data/road_map_data";
+import { BackgroundStarts } from "@/src/components/background_starts";
 
-export  function CarrouselSection() {
+export function CarrouselSection() {
   const TOTAL_SLIDES = slides.length;
 
   const [active, setActive] = useState(0);
@@ -81,40 +82,56 @@ export  function CarrouselSection() {
 
   /* ---------------- RENDER ---------------- */
   return (
-    <section className="relative h-full py-32 md:py-0 md:h-screen flex flex-col items-center justify-center overflow-hidden">
-      <div
-        className="size-full overflow-hidden max-w-6xl select-none cursor-grab flex items-center justify-center touch-pan-y relative"
-        onMouseDown={(e) => startDrag(e.clientX)}
-        onMouseMove={(e) => onDragMove(e.clientX)}
-        onMouseUp={endDrag}
-        onMouseLeave={endDrag}
-        onTouchStart={(e) => startDrag(e.touches[0].clientX)}
-        onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
-        onTouchEnd={endDrag}
-      >
-        <div
-          ref={sliderRef}
-          className={`size-full flex ${
-            isDragging ? "" : "transition-transform duration-500 ease-out"
-          }`}
-          style={{
-            transform: `translateX(${currentTranslate}px)`,
-          }}
-        >
-          {slides.map((slide, index) => (
+    <section className="relative py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row  gap-16">
+        {/* Titulo  */}
+        <div className="w-full md:w-1/2 text-center md:text-start">
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-4 leading-8 md:leading-14">
+            Lo que{" "}
+            <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
+              crearán y <br />
+              aprenderán
+            </span>{" "}
+            en sus misiones
+          </h2>
+
+          <p className="text-xs md:text-base font-sans text-muted-foreground max-w-xl mx-auto md:mx-0">
+            Cada clase es una aventura. <br className="block md:hidden" />
+            Cada línea de código, un logro.
+          </p>
+        </div>
+
+        {/* Crrousel  */}
+        <div className="w-full md:w-1/2 relative">
+          <div
+            className="overflow-hidden cursor-grab select-none"
+            onMouseDown={(e) => startDrag(e.clientX)}
+            onMouseMove={(e) => onDragMove(e.clientX)}
+            onMouseUp={endDrag}
+            onMouseLeave={endDrag}
+            onTouchStart={(e) => startDrag(e.touches[0].clientX)}
+            onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
+            onTouchEnd={endDrag}
+          >
             <div
-              key={index}
-              className="min-w-full h-full relative overflow-hidden"
+              ref={sliderRef}
+              className={`flex ${
+                isDragging ? "" : "transition-transform duration-500 ease-out"
+              }`}
+              style={{
+                transform: `translateX(${currentTranslate}px)`,
+              }}
             >
-              <div className="size-full max-w-6xl mx-auto px-8 md:px-6 md:p-10 flex">
-                <div className="flex size-full md:gap-12 items-center relative flex-col justify-center md:justify-normal lg:flex-row">
-                  {/* TEXTO */}
-                  <div className="relative max-w-md space-y-3 md:space-y-5 text-center lg:text-left lg:-top-32 lg:left-32">
-                    <div>
-                      <p className="text-2xl font-bold leading-5 md:leading-2">
-                        {slide.titleTop}
-                      </p>
-                      <p className="text-4xl md:text-5xl text-text-tertiary font-bold">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className="min-w-full flex flex-col items-center md:items-start text-center md:text-left px-4"
+                >
+                  {/* TEXTO DEL SLIDE */}
+                  <div className="max-w-md space-y-4 mb-6">
+                    <div className="">
+                      <p className="text-2xl font-bold leading-5">{slide.titleTop}</p>
+                      <p className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
                         {slide.titleMain}
                       </p>
                     </div>
@@ -125,36 +142,34 @@ export  function CarrouselSection() {
                   </div>
 
                   {/* IMAGEN */}
-                  <div className="relative flex justify-center mt-10 lg:mt-0 lg:absolute lg:right-32 lg:bottom-32">
-                    <Image
-                      src={slide.image}
-                      width={500}
-                      height={500}
-                      alt={slide.titleMain}
-                      draggable={false}
-                      className="w-80 lg:w-125 h-auto select-none pointer-events-none"
-                    />
-                  </div>
+                  <Image
+                    src={slide.image}
+                    width={500}
+                    height={500}
+                    alt={slide.titleMain}
+                    draggable={false}
+                    className="w-72 md:w-96 h-auto pointer-events-none select-none"
+                  />
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* DOTS */}
-      <div className="absolute bottom-16 flex gap-3 p-4">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => snapToSlide(index)}
-            className={`transition-all duration-300 rounded-full cursor-pointer ${
-              active === index
-                ? "w-10 h-2 bg-text-tertiary"
-                : "w-2 h-2 bg-text-primary/40"
-            }`}
-          />
-        ))}
+          {/* DOTS */}
+          <div className="flex justify-center md:justify-start gap-3 mt-6">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => snapToSlide(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  active === index
+                    ? "w-10 h-2 bg-text-tertiary"
+                    : "w-2 h-2 bg-text-primary/40"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

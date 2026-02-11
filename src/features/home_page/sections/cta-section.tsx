@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { Button } from "@/src/components/button"
+import { Button } from "@/src/components/button_component"
 import { ArrowRight, Calendar, Mail } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
