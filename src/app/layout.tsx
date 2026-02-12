@@ -22,7 +22,7 @@ const pixelify = Pixelify_Sans({
 
 export const metadata: Metadata = {
   title: 'Código con Frank | Inicio',
-  description: 'Clases personalizadas de programación. Aprende desarrollo web, software y más con mentorías.'
+  description: 'Clases personalizadas de programación. Aprende desarrollo web, software y más con mentorías personalizadas.'
 }
 
 export default function RootLayout({

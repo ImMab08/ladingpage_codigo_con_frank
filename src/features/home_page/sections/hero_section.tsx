@@ -64,7 +64,7 @@ export function HeroSection() {
             </div>
 
             {/* Botón */}
-            <ButtonWhatsapp />
+            <ButtonWhatsapp text="¡Quiero mi curso!" />
 
             {/* Referencia social */}
             <div className="flex items-center gap-6 pt-4">

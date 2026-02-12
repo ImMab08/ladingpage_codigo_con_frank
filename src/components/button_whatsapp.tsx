@@ -3,7 +3,11 @@ import { ArrowRight } from "lucide-react";
 
 import { Button } from "./button_component";
 
-export function ButtonWhatsapp() {
+interface TextoBoton {
+  text: string
+}
+
+export function ButtonWhatsapp({ text }: TextoBoton) {
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       <Button
@@ -12,7 +16,7 @@ export function ButtonWhatsapp() {
         className="bg-yellow-300 text-primary hover:bg-yellow-300/90 gap-2 text-base"
       >
         <Link target="_blank" href="https://wa.me/message/4KVV5SVUMXGSC1">
-          Iniciar misión
+          {text}
           <ArrowRight size={18} />
         </Link>
       </Button>

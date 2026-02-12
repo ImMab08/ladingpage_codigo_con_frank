@@ -51,12 +51,12 @@ export function GameSection() {
             </div>
 
             <div className="hidden md:block">
-              <ButtonWhatsapp />
+              <ButtonWhatsapp text="Iniciar misió" />
             </div>
           </div>
         </div>
         <div className="relative -bottom-64 block md:hidden">
-          <ButtonWhatsapp />
+          <ButtonWhatsapp text="Iniciar misión"/>
         </div>
       </div>
     </section>

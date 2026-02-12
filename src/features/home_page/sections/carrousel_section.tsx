@@ -83,7 +83,7 @@ export function CarrouselSection() {
 
   /* ---------------- RENDER ---------------- */
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <section id="beneficios" className="relative py-20 md:py-28 overflow-hidden">
       <BackgroundStarts />
       <div className="max-w-6xl mx-auto px-6">
         {/* GRID PRINCIPAL */}
@@ -114,11 +114,11 @@ export function CarrouselSection() {
               </li>
               <li className="flex items-start md:items-center gap-3">
                 <IconCheckCircle className="text-text-tertiary" />
-                <p>Lógica y buenas<span className="text-text-tertiary">prácticas</span>.</p>
+                <p>Lógica y buenas <span className="text-text-tertiary">prácticas</span>.</p>
               </li>
               <li className="flex items-start md:items-center gap-3">
                 <IconCheckCircle className="text-text-tertiary" />
-                <p>Control de <span className="text-text-tertiary">vversiones</span>.</p>
+                <p>Control de <span className="text-text-tertiary">versiones</span>.</p>
               </li>
             </ul>
           </div>
