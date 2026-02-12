@@ -4,13 +4,8 @@ export const slides = [
     titleMain: "programación",
     text: (
       <>
-        Construimos los cimientos de nuestro camino,{" "}
-        <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
-          aprenderás qué es realmente programar
-        </span>
-        , cómo funciona un programa y cómo dar instrucciones claras a una
-        computadora. No importa tu edad ni si nunca has visto código antes: aquí
-        todos comenzamos desde cero, sin presión y con ejemplos claros.
+        Aprenderás qué es programar y cómo dar instrucciones claras a una
+        computadora. Empezamos desde cero, sin presión y con ejemplos prácticos.
       </>
     ),
     image: "/img/image_00.png",
@@ -20,14 +15,11 @@ export const slides = [
     titleMain: "programador",
     text: (
       <>
-        Programar no es escribir código, es{" "}
+        Entrenamos tu mente para{" "}
         <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
-          aprender a resolver problemas
+          resolver problemas paso a paso
         </span>
-        . Aquí entrenamos tu mente para pensar paso a paso, dividir situaciones
-        complejas y encontrar soluciones claras. Esta forma de pensar funciona
-        igual en cualquier lenguaje y se convierte en una habilidad para toda la
-        vida.
+        . Una habilidad que funciona en cualquier lenguaje y para toda la vida.
       </>
     ),
     image: "/img/image_01.png",
@@ -37,12 +29,10 @@ export const slides = [
     titleMain: "construcción",
     text: (
       <>
-        Aprenderás cómo se organiza un programa real y cómo transformar ideas en
-        proyectos funcionales. Usaremos{" "}
+        Transformarás ideas en proyectos reales usando{" "}
         <span className="text-orange-500">desarrollo web</span> y{" "}
-        <span className="text-purple-500">Python</span> como herramientas para
-        construir con orden y sentido. El objetivo no es correr rápido, sino
-        entender cada parte y construir bien.
+        <span className="text-purple-500">Python</span>. Construir bien es más
+        importante que ir rápido.
       </>
     ),
     image: "/img/image_02.png",
@@ -52,11 +42,11 @@ export const slides = [
     titleMain: "seguir creciendo",
     text: (
       <>
-        Consolidamos todo lo aprendido para que avances con{" "}
-        <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">bases sólidas y confianza</span>.
-        Aprenderás cómo seguir estudiando de forma autónoma y cómo avanzar hacia
-        niveles más altos sin perderte. No vendemos atajos, construimos
-        fundamentos que realmente duran.
+        Consolidarás lo aprendido para avanzar con{" "}
+        <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
+          confianza y bases sólidas
+        </span>
+        , y seguir aprendiendo de forma autónoma.
       </>
     ),
     image: "/img/image_03.png",

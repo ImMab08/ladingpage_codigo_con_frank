@@ -82,92 +82,103 @@ export function CarrouselSection() {
 
   /* ---------------- RENDER ---------------- */
   return (
-    <section className="relative py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row  gap-16">
-        {/* Titulo  */}
-        <div className="w-full md:w-1/2 text-center md:text-start">
-          <h2 className="text-4xl md:text-6xl font-extrabold mb-4 leading-8 md:leading-14">
-            Lo que{" "}
-            <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
-              crearán y <br />
-              aprenderán
-            </span>{" "}
-            en sus misiones
-          </h2>
+    <section className="relative py-20 md:py-28 overflow-hidden">
+      <BackgroundStarts />
+      <div className="max-w-6xl mx-auto px-6">
+        {/* GRID PRINCIPAL */}
+        <div className="grid md:grid-cols-2 gap-14 md:gap-20 items-center">
+          {/* COLUMNA IZQUIERDA */}
+          <div className="max-w-xs md:max-w-6xl w-full text-center md:text-left space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-8 md:leading-14">
+              Lo que{" "}
+              <span className="bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
+                crearán y <br className="hidden md:block" />
+                aprenderán
+              </span>{" "}
+              en sus misiones
+            </h2>
 
-          <p className="text-xs md:text-base font-sans text-muted-foreground max-w-xl mx-auto md:mx-0">
-            Cada clase es una aventura. <br className="block md:hidden" />
-            Cada línea de código, un logro.
-          </p>
-        </div>
-
-        {/* Crrousel  */}
-        <div className="w-full md:w-1/2 relative">
-          <div
-            className="overflow-hidden cursor-grab select-none"
-            onMouseDown={(e) => startDrag(e.clientX)}
-            onMouseMove={(e) => onDragMove(e.clientX)}
-            onMouseUp={endDrag}
-            onMouseLeave={endDrag}
-            onTouchStart={(e) => startDrag(e.touches[0].clientX)}
-            onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
-            onTouchEnd={endDrag}
-          >
-            <div
-              ref={sliderRef}
-              className={`flex ${
-                isDragging ? "" : "transition-transform duration-500 ease-out"
-              }`}
-              style={{
-                transform: `translateX(${currentTranslate}px)`,
-              }}
-            >
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className="min-w-full flex flex-col items-center md:items-start text-center md:text-left px-4"
-                >
-                  {/* TEXTO DEL SLIDE */}
-                  <div className="max-w-md space-y-4 mb-6">
-                    <div className="">
-                      <p className="text-2xl font-bold leading-5">{slide.titleTop}</p>
-                      <p className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-400 via-green-400 to-green-500 bg-clip-text text-transparent">
-                        {slide.titleMain}
-                      </p>
-                    </div>
-
-                    <p className="text-sm md:text-base text-text-primary/80">
-                      {slide.text}
-                    </p>
-                  </div>
-
-                  {/* IMAGEN */}
-                  <Image
-                    src={slide.image}
-                    width={500}
-                    height={500}
-                    alt={slide.titleMain}
-                    draggable={false}
-                    className="w-72 md:w-96 h-auto pointer-events-none select-none"
-                  />
-                </div>
-              ))}
-            </div>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-md md:max-w-lg mx-auto md:mx-0">
+              Cada clase es una aventura. Cada línea de código, un logro.
+            </p>
           </div>
 
-          {/* DOTS */}
-          <div className="flex justify-center md:justify-start gap-3 mt-6">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => snapToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  active === index
-                    ? "w-10 h-2 bg-text-tertiary"
-                    : "w-2 h-2 bg-text-primary/40"
-                }`}
-              />
-            ))}
+          {/* COLUMNA DERECHA */}
+          <div className="relative w-full overflow-hidden">
+            <div className="relative rounded-2xl bg-primary/30 backdrop-blur-lg border border-white/10 p-6 sm:p-8 md:p-10">
+              {/* CARRUSEL */}
+              <div
+                className="overflow-hidden cursor-grab select-none"
+                onMouseDown={(e) => startDrag(e.clientX)}
+                onMouseMove={(e) => onDragMove(e.clientX)}
+                onMouseUp={endDrag}
+                onMouseLeave={endDrag}
+                onTouchStart={(e) => startDrag(e.touches[0].clientX)}
+                onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
+                onTouchEnd={endDrag}
+              >
+                <div
+                  ref={sliderRef}
+                  className={`flex ${
+                    isDragging
+                      ? ""
+                      : "transition-transform duration-500 ease-out"
+                  }`}
+                  style={{
+                    transform: `translateX(${currentTranslate}px)`,
+                  }}
+                >
+                  {slides.map((slide, index) => (
+                    <div
+                      key={index}
+                      className="min-w-full flex flex-col items-center text-center px-2 sm:px-4"
+                    >
+                      {/* TEXTO DEL SLIDE */}
+                      <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                        <div>
+                          <p className="text-lg sm:text-xl font-semibold">
+                            {slide.titleTop}
+                          </p>
+
+                          <p className="text-2xl sm:text-3xl md:text-4xl font-bold  bg-linear-to-r from-blue-400 via-green-400 to-green-500  bg-clip-text text-transparent">
+                            {slide.titleMain}
+                          </p>
+                        </div>
+
+                        <p className="text-xs sm:text-sm md:text-base text-text-primary/80 max-w-xs sm:max-w-md mx-auto">
+                          {slide.text}
+                        </p>
+                      </div>
+
+                      {/* IMAGEN */}
+                      <Image
+                        src={slide.image}
+                        width={500}
+                        height={500}
+                        alt={slide.titleMain}
+                        draggable={false}
+                        className="w-56 sm:w-72 md:w-96 h-auto pointer-events-none select-none"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* DOTS */}
+              <div className="flex justify-center gap-3 mt-6 sm:mt-8">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => snapToSlide(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      active === index
+                        ? "w-8 sm:w-10 h-2 bg-tertiary"
+                        : "w-2 h-2 bg-white/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
