@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { slides } from "@/src/features/data/road_map_data";
 import { BackgroundStarts } from "@/src/components/background_starts";
+import { IconCheckCircle } from "@/src/shared/icons/icon_check_circle";
 
 export function CarrouselSection() {
   const TOTAL_SLIDES = slides.length;
@@ -101,6 +102,25 @@ export function CarrouselSection() {
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-md md:max-w-lg mx-auto md:mx-0">
               Cada clase es una aventura. Cada línea de código, un logro.
             </p>
+
+            <ul className="space-y-3 text-base md:text-lg">
+              <li className="flex items-start md:items-center gap-3">
+                <IconCheckCircle className="text-text-tertiary" />
+                <p>Videojuego con <span className="text-text-tertiary">Python</span>.</p>
+              </li>
+              <li className="flex items-start md:items-center gap-3">
+                <IconCheckCircle className="text-text-tertiary" />
+                <p>Estructuras <span className="text-text-tertiary">POO</span>.</p>
+              </li>
+              <li className="flex items-start md:items-center gap-3">
+                <IconCheckCircle className="text-text-tertiary" />
+                <p>Lógica y buenas<span className="text-text-tertiary">prácticas</span>.</p>
+              </li>
+              <li className="flex items-start md:items-center gap-3">
+                <IconCheckCircle className="text-text-tertiary" />
+                <p>Control de <span className="text-text-tertiary">vversiones</span>.</p>
+              </li>
+            </ul>
           </div>
 
           {/* COLUMNA DERECHA */}
